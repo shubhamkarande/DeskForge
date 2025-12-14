@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.df-bg.secondary');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.df-border.primary');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.df-border.hover');
+}
+
+/* Focus styles */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid theme('colors.df-accent.primary');
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: theme('colors.df-accent.primary');
+  color: white;
+}
+
+/* Utilities */
+@layer utilities {
+  .glass {
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid theme('colors.df-border.primary');
+  }
+
+  .glass-hover:hover {
+    background: rgba(37, 37, 68, 0.9);
+    border-color: theme('colors.df-border.hover');
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, theme('colors.df-accent.primary'), theme('colors.df-accent.secondary'));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+/* Monaco Editor customization */
+.monaco-editor {
+  padding-top: 8px !important;
+}
+
+.monaco-editor .margin {
+  background: theme('colors.df-bg.primary') !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
